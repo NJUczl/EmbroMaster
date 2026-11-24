@@ -8,7 +8,71 @@
     content="EmbroMaster: Controllable Multi-Stitch Embroidery Synthesis with Craft-Aware Planning. StitchAtlas dataset, method, results, and qualitative comparisons.">
   <meta name="theme-color" content="#356e67">
   <title>EmbroMaster: Controllable Multi-Stitch Embroidery Synthesis with Craft-Aware Planning</title>
-  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    .author-info {
+      max-width: 1500px;
+      margin: 1.05rem auto 0;
+      padding: 0 1.5rem;
+      text-align: center;
+      color: inherit;
+    }
+    .author-info .authors {
+      margin: 0 0 0.35rem;
+      font-size: clamp(0.95rem, 1.65vw, 1.3rem);
+      line-height: 1.45;
+      font-weight: 400;
+    }
+    .author-info .author-link {
+      color: #2196e8;
+      text-decoration: none;
+    }
+    .author-info .author-link:hover,
+    .author-info .author-link:focus-visible {
+      text-decoration: underline;
+    }
+    .author-info sup {
+      font-size: 0.66em;
+      line-height: 0;
+      vertical-align: super;
+    }
+    .author-info .affiliations {
+      margin: 0;
+      color: #4b5563;
+      font-size: clamp(0.78rem, 1.35vw, 1.05rem);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .author-info .affiliation-item {
+      display: inline-block;
+      white-space: nowrap;
+      margin: 0 0.18em;
+    }
+    .author-info .author-notes {
+      margin: 0.3rem 0 0;
+      color: #4b5563;
+      font-size: clamp(0.78rem, 1.15vw, 0.92rem);
+      line-height: 1.4;
+    }
+    @media (max-width: 640px) {
+      .author-info {
+        padding: 0 0.75rem;
+      }
+      .author-info .authors {
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+      .author-info .affiliations {
+        font-size: 0.72rem;
+        line-height: 1.5;
+      }
+      .author-info .author-notes {
+        font-size: 0.72rem;
+      }
+    }
+  </style>
+
+<link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 
@@ -16,9 +80,24 @@
   <header class="hero">
     <h1><span class="title-line"><span class="project-name">EmbroMaster:</span> Controllable Multi-Stitch Embroidery
         Synthesis</span> <span class="title-line">with Craft-Aware Planning</span></h1>
-    <div class="submission-info" aria-label="Submission information">
-      <p>Anonymous CVPR submission</p>
-      <p>Paper ID: 14176</p>
+    <div class="author-info" aria-label="Authors and affiliations">
+      <p class="authors">
+        <a href="#" class="author-link">Zhanlin Chen</a><sup>1,*</sup>,
+        <a href="https://edward3862.github.io/" class="author-link" target="_blank" rel="noopener noreferrer">Zheng Gu</a><sup>2,*</sup>,
+        <a href="#" class="author-link">Hao Liang</a><sup>1</sup>,
+        <a href="#" class="author-link">Wenhua Shi</a><sup>3,†</sup>,
+        <a href="http://jinxin.me/" class="author-link" target="_blank" rel="noopener noreferrer">Xin Jin</a><sup>4,5</sup>,
+        <a href="https://cs.nju.edu.cn/huojing/" class="author-link" target="_blank" rel="noopener noreferrer">Jing Huo</a><sup>1,†</sup>,
+        <a href="https://cs.nju.edu.cn/gaoyang/" class="author-link" target="_blank" rel="noopener noreferrer">Yang Gao</a><sup>1</sup>
+      </p>
+      <div class="affiliations" aria-label="Author affiliations">
+        <span class="affiliation-item"><sup>1</sup> State Key Laboratory for Novel Software Technology, Nanjing University</span>
+        <span class="affiliation-item"><sup>2</sup> College of Computer Science and Software Engineering, Shenzhen University</span>
+        <span class="affiliation-item"><sup>3</sup> School of Art and Design, Shanghai Institute of Technology</span>
+        <span class="affiliation-item"><sup>4</sup> Beijing Electronic Science and Technology Institute</span>
+        <span class="affiliation-item"><sup>5</sup> State Key Laboratory of General Artificial Intelligence, Beijing Institute for General Artificial Intelligence (BIGAI)</span>
+      </div>
+      <p class="author-notes"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
     </div>
   </header>
   <main>
