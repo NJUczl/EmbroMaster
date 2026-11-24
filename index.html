@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="EmbroMaster: Controllable Multi-Stitch Embroidery Synthesis with Craft-Aware Planning. StitchAtlas dataset, method, results, and qualitative comparisons.">
+  <meta name="theme-color" content="#356e67">
+  <title>EmbroMaster: Controllable Multi-Stitch Embroidery Synthesis with Craft-Aware Planning</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
+</head>
+
+<body>
+  <header class="hero">
+    <h1><span class="title-line"><span class="project-name">EmbroMaster:</span> Controllable Multi-Stitch Embroidery
+        Synthesis</span> <span class="title-line">with Craft-Aware Planning</span></h1>
+    <div class="submission-info" aria-label="Submission information">
+      <p>Anonymous CVPR submission</p>
+      <p>Paper ID: 14176</p>
+    </div>
+  </header>
+  <main>
+    <aside id="tldr" class="tldr container" aria-label="TLDR">
+      <p><strong>TLDR:</strong> EmbroMaster turns flat designs into controllable multi-stitch embroideries through
+        craft-aware planning, using an editable embroidery blueprint to guide synthesis and support interactive,
+        region-level stitch editing.</p>
+    </aside>
+    <section id="overview" class="tinted" aria-labelledby="overview-title">
+      <div class="container">
+        <h2 id="overview-title">Overview</h2>
+        <figure class="">
+          <button class="figure-button" type="button" data-title="EmbroMaster overview"
+            aria-label="Enlarge embromaster overview">
+            <img src="assets/images/teaser_final.webp" width="3200" height="1392"
+              alt="Overview of EmbroMaster: a flat design, stitch planning and editing, and generated multi-stitch embroideries."
+              fetchpriority="high" decoding="async">
+          </button>
+          <figcaption>Controllable multi-stitch embroidery with EmbroMaster. Left: Embroideries generated from flat
+            designs with automatically planned or user-assigned stitches. Right: A single embroidery combining six
+            stitch types, with details of thread textures.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="abstract" aria-labelledby="abstract-title">
+      <div class="container">
+        <h2 id="abstract-title">Abstract</h2>
+        <div class="prose">
+          <p>Generating embroidery takes more than imitating thread texture: a model must decide which stitch suits each
+            region and render several distinct stitches together in one image. However, current generative models lack
+            the embroidery knowledge to plan which stitch a region should use. Even when specific rules are given, they
+            still struggle to render multiple stitches in one image. In this paper, we present EmbroMaster to address
+            these problems. We first construct StitchAtlas, a multi-stitch embroidery dataset. We collect real
+            embroidery samples and train models on them to expand the dataset with high-quality synthetic images, along
+            with stitch craft knowledge collected from embroidery experts. We then introduce a craft-aware planning
+            agent. It takes a flat design and user constraints as input and produces a structured stitch plan, called an
+            embroidery blueprint, that assigns a stitch to each region. Finally, we develop a multi-stitch synthesis
+            pipeline that follows the blueprint to generate embroidery images and supports interactive, region-level
+            stitch editing. Experiments on six stitch types demonstrate that our method achieves better generation
+            quality than existing methods. Embroidery experts also rate our results higher on stitch assignment
+            appropriateness and visual realism, suggesting the potential of our method for various application
+            scenarios.</p>
+        </div>
+      </div>
+    </section>
+    <section id="dataset" class="tinted" aria-labelledby="dataset-title">
+      <div class="container">
+        <h2 id="dataset-title">StitchAtlas Dataset Construction</h2>
+        <figure class="">
+          <button class="figure-button" type="button" data-title="StitchAtlas dataset construction"
+            aria-label="Enlarge stitchatlas dataset construction">
+            <img src="assets/images/dataset_final.webp" width="3200" height="1621"
+              alt="StitchAtlas dataset construction pipeline, including real sample collection, data expansion, and expert filtering."
+              loading="lazy" decoding="async">
+          </button>
+          <figcaption>StitchAtlas combines design–stitch pairs with stitch craft knowledge. Real sample collection and
+            stitch-specific expansion provide real and synthetic embroideries. Paired design-stitch data curation
+            converts them to flat-color designs and uses expert filtering to select high-quality aligned design-stitch
+            pairs for training stitch-specific renderers. In parallel, stitch craft knowledge curation formalizes expert
+            rules for craft-aware planning.</figcaption>
+        </figure>
+        <figure class="real-samples">
+          <button class="figure-button" type="button" data-title="Real Su embroidery samples"
+            aria-label="Enlarge real su embroidery samples">
+            <img src="assets/images/realdata.webp" width="3124" height="1739"
+              alt="High-resolution views of real Su embroidery samples illustrating different stitch structures."
+              loading="lazy" decoding="async">
+          </button>
+          <figcaption>High-resolution samples of real Su embroidery reveal the distinctive thread structures and
+            textures of different stitch types.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="method" aria-labelledby="method-title">
+      <div class="container">
+        <h2 id="method-title">Method</h2>
+        <figure class="">
+          <button class="figure-button" type="button" data-title="EmbroMaster method"
+            aria-label="Enlarge embromaster method">
+            <img src="assets/images/method_final.webp" width="3200" height="1730"
+              alt="EmbroMaster framework with craft-aware planning, an editable embroidery blueprint, stitch-specific rendering, and multi-stitch synthesis."
+              loading="lazy" decoding="async">
+          </button>
+          <figcaption>In Stage 1 (craft-aware planning), the planning agent uses stitch craft knowledge to translate a
+            flat design and user constraints into an editable embroidery blueprint specifying semantic masks and stitch
+            assignments. Stage 2 (multi-stitch synthesis) uses these assignments to select only the required
+            stitch-specific LoRAs trained on design-stitch pairs for stitch-specific rendering. Area-ordered composition
+            uses the blueprint masks to blend regions from large to small, producing multi-stitch embroidery.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="results" class="tinted" aria-labelledby="results-title">
+      <div class="container">
+        <h2 id="results-title">EmbroMaster Results</h2>
+        <div id="results-carousel" class="carousel" role="region" aria-roledescription="carousel"
+          aria-label="EmbroMaster generated results" tabindex="0">
+          <div class="carousel-stage">
+            <figure class="result-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+              <button class="figure-button" type="button" data-title="Results 1" aria-label="Enlarge results 1">
+                <img src="assets/images/ours-1.png" width="6281" height="7910"
+                  alt="EmbroMaster generated embroidery results, sheet 1 of 4." fetchpriority="high" decoding="async">
+              </button>
+
+            </figure>
+            <figure class="result-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" hidden>
+              <button class="figure-button" type="button" data-title="Results 2" aria-label="Enlarge results 2">
+                <img src="assets/images/ours-2.png" width="6239" height="7855"
+                  alt="EmbroMaster generated embroidery results, sheet 2 of 4." fetchpriority="high" decoding="async">
+              </button>
+
+            </figure>
+            <figure class="result-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" hidden>
+              <button class="figure-button" type="button" data-title="Results 3" aria-label="Enlarge results 3">
+                <img src="assets/images/ours-3.png" width="6259" height="7855"
+                  alt="EmbroMaster generated embroidery results, sheet 3 of 4." fetchpriority="high" decoding="async">
+              </button>
+
+            </figure>
+            <figure class="result-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" hidden>
+              <button class="figure-button" type="button" data-title="Results 4" aria-label="Enlarge results 4">
+                <img src="assets/images/ours-4.png" width="6290" height="7856"
+                  alt="EmbroMaster generated embroidery results, sheet 4 of 4." fetchpriority="high" decoding="async">
+              </button>
+
+            </figure>
+          </div>
+          <button class="carousel-arrow prev" type="button" aria-label="Previous result"
+            aria-controls="results-carousel">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m15 5-7 7 7 7" />
+            </svg>
+          </button>
+          <button class="carousel-arrow next" type="button" aria-label="Next result" aria-controls="results-carousel">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 5 7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <p class="result-caption">Multi-stitch embroideries generated by EmbroMaster from diverse flat designs.</p>
+        <div class="carousel-controls">
+          <div class="pagination" role="group" aria-label="Choose a result">
+            <button type="button" data-slide-to="0" aria-label="Show result 1" aria-current="true"></button>
+            <button type="button" data-slide-to="1" aria-label="Show result 2"></button>
+            <button type="button" data-slide-to="2" aria-label="Show result 3"></button>
+            <button type="button" data-slide-to="3" aria-label="Show result 4"></button>
+          </div>
+          <span id="result-counter" class="result-counter" aria-hidden="true">1 / 4</span>
+        </div>
+        <span id="result-announcement" class="sr-only" aria-live="polite" aria-atomic="true">Result 1 of 4</span>
+      </div>
+    </section>
+    <section id="comparisons" aria-labelledby="comparisons-title">
+      <div class="container">
+        <h2 id="comparisons-title">Comparisons</h2>
+        <figure class="">
+          <button class="figure-button" type="button" data-title="Qualitative comparisons"
+            aria-label="Enlarge qualitative comparisons">
+            <img src="assets/images/qualitative_final.webp" width="3200" height="2497"
+              alt="Qualitative comparison of stitch assignment and embroidery generation by EmbroMaster, GPT, Gemini, and Qwen."
+              loading="lazy" decoding="async">
+          </button>
+          <figcaption>Given the same inputs, EmbroMaster, GPT, Gemini, and Qwen generate stitch assignments and
+            embroideries. Boxes show enlarged details; underlined entries indicate inappropriate stitch assignments.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+  <dialog id="image-viewer" class="lightbox" aria-labelledby="viewer-title">
+    <div class="lightbox-shell">
+      <div class="lightbox-toolbar">
+        <h2 id="viewer-title" class="lightbox-title">Figure preview</h2>
+        <button id="viewer-zoom" type="button" aria-pressed="false">Original size</button>
+        <button id="viewer-close" class="close-button" type="button" aria-label="Close image preview"
+          autofocus>×</button>
+      </div>
+      <div id="viewer-content" class="lightbox-content"><img id="viewer-image" alt=""></div>
+    </div>
+  </dialog>
+</body>
+
+</html>
