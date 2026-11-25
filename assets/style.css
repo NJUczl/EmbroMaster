@@ -116,8 +116,90 @@ figcaption, .result-caption { width: 100%; margin: 12px 0 0; font-size: inherit;
  h2 { break-after: avoid; }
 }
 
-/* Submission metadata and concise summary added above the existing overview. */
-.submission-info { margin-top: 20px; font-family: "Google Sans", "Noto Sans", Arial, sans-serif; font-size: 1.375rem; font-weight: 700; line-height: 1.5; }
-.submission-info p { margin: 0; }
 .tldr { margin-bottom: 28px; text-align: left; }
 .tldr p { margin: 0; }
+
+
+/* Author information */
+.author-info {
+  max-width: 1500px;
+  margin: 1.05rem auto 0;
+  padding: 0 1.5rem;
+  text-align: center;
+  color: inherit;
+}
+
+.author-info .authors {
+  margin: 0 0 0.35rem;
+  font-size: clamp(0.95rem, 1.65vw, 1.3rem);
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.author-info .author-link {
+  color: #2196e8;
+  text-decoration: none;
+}
+
+.author-info .author-link:hover,
+.author-info .author-link:focus-visible {
+  text-decoration: underline;
+}
+
+.author-info sup {
+  font-size: 0.66em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.author-info .affiliations {
+  margin: 0;
+  color: #4b5563;
+  font-size: clamp(0.78rem, 1.35vw, 1.05rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.author-info .affiliation-item {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 0.18em;
+}
+
+.author-info .author-notes {
+  margin: 0.3rem 0 0;
+  color: #4b5563;
+  font-size: clamp(0.78rem, 1.15vw, 0.92rem);
+  line-height: 1.4;
+}
+
+/* On phones, allow each complete affiliation to wrap naturally. */
+@media (max-width: 700px) {
+  .author-info {
+    max-width: 100%;
+    padding: 0 0.75rem;
+  }
+
+  .author-info .authors {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .author-info .affiliations {
+    width: 100%;
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .author-info .affiliation-item {
+    display: block;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    margin: 0.12em 0;
+  }
+
+  .author-info .author-notes {
+    font-size: 0.72rem;
+  }
+}
